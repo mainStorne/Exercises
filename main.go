@@ -6,7 +6,6 @@ import (
 	"log"
 	"math/rand"
 	"os"
-	"os/exec"
 )
 
 func main() {
@@ -17,9 +16,6 @@ func main() {
 	}
 	fi.WriteString(fmt.Sprint(rand.Int()))
 	defer fi.Close()
-	cmd := exec.Command("powershell", "/c", "cat", "io.in")
-	cmd.Stdout = os.Stdout
-	cmd.Run()
 	fo, _ := os.Create("io.out")
 	buffer := make([]byte, 4)
 	for {
